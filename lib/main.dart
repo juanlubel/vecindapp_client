@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:vecinapp/screens/home.dart';
+import 'package:vecinapp/routes.dart';
 
 void main() => runApp(MyApp());
 
@@ -10,56 +10,20 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
         title: 'Flutter Demo',
         theme: ThemeData(
-          // This is the theme of your application.
-          //
-          // Try running your application with "flutter run". You'll see the
-          // application has a blue toolbar. Then, without quitting the app, try
-          // changing the primarySwatch below to Colors.green and then invoke
-          // "hot reload" (press "r" in the console where you ran "flutter run",
-          // or simply save your changes to "hot reload" in a Flutter IDE).
-          // Notice that the counter didn't reset back to zero; the application
-          // is not restarted.
+            fontFamily: 'nunito',
             primarySwatch: Colors.lightBlue,
             textTheme: TextTheme(
-                title: TextStyle(
-                    fontFamily: 'nunito',
+                headline1: TextStyle(
                     fontWeight: FontWeight.w300,
                     fontSize: 14.5
-                )
+                ),
+              bodyText1: TextStyle(
+                  fontWeight: FontWeight.w300,
+                  fontSize: 14.5
+              ),
             ),
-            appBarTheme: AppBarTheme(
-                textTheme: TextTheme(
-                  // ignore: deprecated_member_use
-                    body1: TextStyle(
-                        fontFamily: 'nunito',
-                        fontWeight: FontWeight.w300,
-                        fontSize: 14.5
-                    )
-                )
-            )
         ),
-        onGenerateRoute: _routes()
+        onGenerateRoute: routes()
     );
-  }
-
-  RouteFactory _routes() {
-    return (settings) {
-      final Map<String, dynamic> arguments = settings.arguments;
-      Widget screen;
-      switch (settings.name) {
-        case '/':
-          screen = HomeScreen();
-          break;
-//        case '/list':
-//          screen = ListScreen();
-//          break;
-//        case '/details':
-//          screen = DetailsScreen(arguments['id']);
-//          break;
-        default:
-          return null;
-      }
-      return MaterialPageRoute(builder: (BuildContext context) => screen);
-    };
   }
 }
