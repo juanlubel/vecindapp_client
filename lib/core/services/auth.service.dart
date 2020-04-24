@@ -1,6 +1,4 @@
 import 'dart:async';
-import 'dart:convert';
-
 import 'package:flutter/cupertino.dart';
 import 'package:vecinapp/core/models/users.dart';
 import 'package:vecinapp/core/services/service.dart';

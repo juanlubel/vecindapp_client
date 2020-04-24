@@ -57,12 +57,4 @@ class HomeLogin {
   }
 }
 
-class UserLogin {
-  final User user;
 
-  UserLogin({this.user});
-
-  Map<String, dynamic> toJson() =>{
-    "user": this.user.toJson()
-  };
-}

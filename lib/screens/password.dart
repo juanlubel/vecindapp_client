@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:vecinapp/core/services/auth.service.dart';
 import 'package:vecinapp/core/sizeConfig.dart';
-import 'package:vecinapp/screens/loader.dart';
+import 'package:vecinapp/screens/user/lobby.dart';
 import 'package:vecinapp/widgets/acceptAlert.dart';
 import 'package:vecinapp/widgets/button.dart';
 import 'package:vecinapp/widgets/homeImage.dart';
@@ -74,9 +74,8 @@ class _PasswordScreenState extends State<PasswordScreen> {
                         )]
                     );
                   case ConnectionState.done:
-                    return Center(
-                        child: Text(snapshot.data.token)
-                    );
+                    print(snapshot.data.email);
+                    return SideBarLayout(snapshot.data.email);
                   default:
                     return Column(
                       mainAxisAlignment: MainAxisAlignment.center,
