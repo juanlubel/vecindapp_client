@@ -22,6 +22,7 @@ class MyApp extends StatelessWidget {
                   fontSize: 14.5
               ),
             ),
+
         ),
         onGenerateRoute: routes()
     );

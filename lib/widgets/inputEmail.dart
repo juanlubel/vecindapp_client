@@ -20,7 +20,11 @@ class InputEmail extends StatelessWidget {
               fontSize: 20.0
           ),
           decoration: InputDecoration(
-            border: InputBorder.none,
+            border: new UnderlineInputBorder(
+                borderSide: new BorderSide(
+                color: Colors.red
+                )
+              ),
             fillColor: Colors.lightBlueAccent,
             labelText: 'E-mail',
             labelStyle: TextStyle(

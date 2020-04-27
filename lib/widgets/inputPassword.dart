@@ -48,7 +48,11 @@ class _InputPasswordState extends State<InputPassword> {
           focusNode: focusPassword,
           obscureText: !_showPassword,
           decoration: InputDecoration(
-            border: InputBorder.none,
+            border: new UnderlineInputBorder(
+                borderSide: new BorderSide(
+                    color: Colors.red
+                )
+            ),
             fillColor: Colors.lightBlueAccent,
             labelText: 'Password',
             labelStyle: TextStyle(

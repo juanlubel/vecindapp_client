@@ -7,11 +7,11 @@ class ButtonLogin extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(top: 10, right: 50, left: 200),
+      padding: const EdgeInsets.only(top: 10),
       child: Container(
-        alignment: Alignment.bottomRight,
+        alignment: Alignment.centerRight,
         height: 50,
-        width: MediaQuery.of(context).size.width,
+        width: 160,
         decoration: BoxDecoration(
           boxShadow: [
             BoxShadow(
@@ -29,17 +29,18 @@ class ButtonLogin extends StatelessWidget {
         ),
         child: FlatButton(
           onPressed: this.onPressed,
+
           child: Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
-//              Text(
-//                'ENTRAR',
-//                style: TextStyle(
-//                  color: Colors.lightBlueAccent,
-//                  fontSize: 14,
-//                  fontWeight: FontWeight.w700,
-//                ),
-//              ),
+              Text(
+                'ENTRAR',
+                style: TextStyle(
+                  color: Colors.lightBlueAccent,
+                  fontSize: 14,
+                  fontWeight: FontWeight.w700,
+                ),
+              ),
               Icon(
                 Icons.arrow_forward,
                 color: Colors.lightBlueAccent,

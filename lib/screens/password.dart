@@ -4,6 +4,7 @@ import 'package:vecinapp/core/services/auth.service.dart';
 import 'package:vecinapp/core/sizeConfig.dart';
 import 'package:vecinapp/screens/user/lobby.dart';
 import 'package:vecinapp/widgets/acceptAlert.dart';
+import 'package:vecinapp/widgets/bottomTitle.dart';
 import 'package:vecinapp/widgets/button.dart';
 import 'package:vecinapp/widgets/homeImage.dart';
 import 'package:vecinapp/widgets/inputPassword.dart';
@@ -120,35 +121,49 @@ class _PasswordScreenState extends State<PasswordScreen> {
     SizeConfig().init(context);
     timeDilation = 1.0;
     return Scaffold(
-        body: Container(
-            decoration: BoxDecoration(
-              gradient: LinearGradient(
-                  begin: Alignment.topRight,
-                  end: Alignment.bottomLeft,
-                  colors: [Color(0xff87a4d3), Colors.white70]),
-            ),
-            padding: const EdgeInsets.only(top: 40.0),
-            alignment: Alignment.topCenter,
-            child: Column(
-              children: <Widget>[
-                HomeImage(
-                  photo: 'assets/images/250Logo.png',
-                  width: 150.0,
-                  onTap: () {
+        resizeToAvoidBottomPadding: false,
+        body: Stack(
+          children: [
+            Container(
+              decoration: BoxDecoration(
+                gradient: LinearGradient(
+                    begin: Alignment.topRight,
+                    end: Alignment.bottomLeft,
+                    colors: [Color(0xff87a4d3), Colors.white70]),
+              ),
+              padding: const EdgeInsets.only(top: 40.0),
+              alignment: Alignment.topCenter,
+              child: Column(
+                children: <Widget>[
+                  HomeImage(
+                    photo: 'assets/images/250Logo.png',
+                    width: 150.0,
+                    onTap: () {
 //                    Navigator.of(context).pop();
-                  },
-                ),
-                InputPassword(
-                    textGrabber,
-                    focusNode: focusFirstNode
-                ),
-                ButtonLogin(
-                  onPressed: this._onPressed,
-                ),
+                    },
+                  ),
+                  InputPassword(
+                      textGrabber,
+                      focusNode: focusFirstNode
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(right: 50.0),
+                    child: Container(
+                      alignment: Alignment.centerRight,
+                      child: ButtonLogin(
+                        onPressed: this._onPressed,
+                      ),
+                    ),
+                  )
 
-              ],
-            )
+                ],
+              )
 
+          ),
+            Align(
+              alignment: Alignment.bottomLeft,
+              child: BottomTitle('PASSWORD'),
+            )]
         )
     );
 

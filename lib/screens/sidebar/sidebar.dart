@@ -3,7 +3,6 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:rxdart/rxdart.dart';
-
 import '../../core/navigators/lobbyNavigator.dart';
 import '../sidebar/menuItem.dart';
 
@@ -64,7 +63,7 @@ class _SideBarState extends State<SideBar> with SingleTickerProviderStateMixin<S
           top: 0,
           bottom: 0,
           left: isSideBarOpenedAsync.data ? 0 : screenWidth - 45,
-          right: isSideBarOpenedAsync.data ? 0 : -screenWidth
+          right: isSideBarOpenedAsync.data ? 0 : -screenWidth,
           child: Row(
             children: <Widget>[
               Align(

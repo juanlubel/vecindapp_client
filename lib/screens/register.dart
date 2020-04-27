@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:vecinapp/core/services/auth.service.dart';
 import 'package:vecinapp/core/sizeConfig.dart';
 import 'package:vecinapp/widgets/acceptAlert.dart';
+import 'package:vecinapp/widgets/bottomTitle.dart';
 import 'package:vecinapp/widgets/button.dart';
 import 'package:vecinapp/widgets/homeImage.dart';
 import 'package:vecinapp/widgets/inputPassword.dart';
@@ -154,38 +155,51 @@ class _RegisterScreenState extends State<RegisterScreen> {
   Widget build(BuildContext context) {
     SizeConfig().init(context);
     return Scaffold(
-        body: Container(
-            decoration: BoxDecoration(
-              gradient: LinearGradient(
-                  begin: Alignment.topRight,
-                  end: Alignment.bottomLeft,
-                  colors: [Color(0xff87a4d3), Colors.white70]),
-            ),
-            child: Column(
-              children: <Widget>[
-                InputPassword(
-                    firstPassGrabber,
-                    focusNode: focusFirstNode
-                ),
-                InputPassword(
-                    secondPassGrabber
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: <Widget>[
-                    Text('Aceptar Terminos'),
-                    Checkbox(
-                      value: acceptTerms,
-                      onChanged: (bool value) => this._changeTerms(),
-                    ),],
-                ),
+        resizeToAvoidBottomPadding: false,
+        body: Stack(
+          children: [
+            Container(
+              decoration: BoxDecoration(
+                gradient: LinearGradient(
+                    begin: Alignment.topRight,
+                    end: Alignment.bottomLeft,
+                    colors: [Color(0xff87a4d3), Colors.white70]),
+              ),
+              child: Column(
+                children: <Widget>[
+                  InputPassword(
+                      firstPassGrabber,
+                      focusNode: focusFirstNode
+                  ),
+                  InputPassword(
+                      secondPassGrabber
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: <Widget>[
+                      Text('Aceptar Terminos'),
+                      Checkbox(
+                        value: acceptTerms,
+                        onChanged: (bool value) => this._changeTerms(),
+                      ),],
+                  ),
 
-                ButtonLogin(
-                  onPressed: this._onPressed,
-                )
-              ],
-            )
-
+                  Padding(
+                    padding: const EdgeInsets.only(right: 50.0),
+                    child: Container(
+                      alignment: Alignment.centerRight,
+                      child: ButtonLogin(
+                        onPressed: this._onPressed,
+                      ),
+                    ),
+                  )
+                ],
+              )
+          ),
+            Align(
+              alignment: Alignment.bottomLeft,
+              child: BottomTitle('REGISTER'),
+            )]
         )
     );
 
