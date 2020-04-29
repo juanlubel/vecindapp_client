@@ -57,4 +57,18 @@ class HomeLogin {
   }
 }
 
+class UserEmbedded {
+  final int pk;
+  final String name;
+
+  UserEmbedded({this.pk, this.name});
+
+  factory UserEmbedded.fromJson(Map<String, dynamic> json) {
+    return UserEmbedded(
+      pk: json['pk'],
+      name: json['name'],
+    );
+  }
+}
+
 

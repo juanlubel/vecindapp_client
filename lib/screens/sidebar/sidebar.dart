@@ -77,14 +77,15 @@ class _SideBarState extends State<SideBar> with SingleTickerProviderStateMixin<S
                     child: Container(
                       width: 35,
                       height: 95,
-                      color: Color(0xff87a4d3),
+//                      color: Color(0xff87a4d3),
+                      color: Colors.blueGrey,
                       alignment: Alignment.centerLeft,
                       child: Padding(
                         padding: const EdgeInsets.only(left: 8.0),
                         child: AnimatedIcon(
                           progress: _animationController.view,
                           icon: AnimatedIcons.menu_close,
-                          color: Colors.blueGrey,
+                          color: Colors.white70,
                           size: 30,
                         ),
                       ),
@@ -95,17 +96,15 @@ class _SideBarState extends State<SideBar> with SingleTickerProviderStateMixin<S
               Expanded(
                 child: Container(
                   padding: const EdgeInsets.symmetric(horizontal: 20),
-                  color: const Color(0xff87a4d3),
-                  child: Column(
+                  constraints: BoxConstraints(maxWidth: 350),
+//                  color: const Color(0xff87a4d3),
+                  color: Colors.blueGrey,
+                  child: ListView(
                     children: <Widget>[
                       SizedBox(
                         height: 60,
                       ),
                       ListTile(
-//                        title: Text(
-//                          "Prateek",
-//                          style: TextStyle(color: Colors.white, fontSize: 30, fontWeight: FontWeight.w800),
-//                        ),
                         title: Text(
                           widget.email,
                           style: TextStyle(
@@ -171,7 +170,6 @@ class _SideBarState extends State<SideBar> with SingleTickerProviderStateMixin<S
                   ),
                 ),
               ),
-
             ],
           ),
         );

@@ -1,5 +1,5 @@
 import 'dart:async';
-import 'dart:math';
+import 'package:hive/hive.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:vecinapp/core/models/users.dart';
 import 'package:vecinapp/core/services/service.dart';
@@ -17,9 +17,12 @@ class LoginUser {
     };
     await new Future.delayed(const Duration(seconds: 3));
     return _netUtil.post(BASE_URL + "/api/auth/login", body: body).then((dynamic res) {
-
       if(res["non_field_errors"] != null) throw new Exception(res["non_field_errors"]);
-      return new User.map(res);
+      var user = new User.map(res);
+      var userBox = Hive.box('user');
+      userBox.put('token', user.token);
+      userBox.put('pk', user.pk);
+      return user;
     });
   }
 
@@ -29,10 +32,12 @@ class LoginUser {
       "password" : password
     };
     return _netUtil.post(BASE_URL + "/api/auth/register", body: body).then((dynamic res) {
-      debugPrint('response register');
-      print(res);
       if(res["non_field_errors"] != null) throw new Exception(res["non_field_errors"]);
-      return new User.map(res);
+      var user = new User.map(res);
+      var userBox = Hive.box('user');
+      userBox.put('token', user.token);
+      userBox.put('pk', user.pk);
+      return user;
     });
   }
 }
@@ -45,11 +50,10 @@ class HomeService {
 
 
   Future<User> login(email) async {
-    await new Future.delayed(const Duration(seconds: 3));
+    await new Future.delayed(const Duration(seconds: 1));
     User user = new User(email: email);
     return _netUtil.post(LOGIN_URL, body: user.toJson())
         .then((dynamic res) {
-      print(res);
       if(res["detail"] == 'Not Found') throw new Exception(res["detail"]);
       return new User.map(res);
     })

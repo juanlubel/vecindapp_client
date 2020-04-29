@@ -34,4 +34,25 @@ class ApiService {
       return _decoder.convert(res);
     });
   }
+
+  Future<dynamic> get(String url, String token, {Map headers, body, encoding}) {
+    print(token);
+    return http
+        .get(url,
+            headers:
+            {HttpHeaders.authorizationHeader: 'Bearer ' + token},)
+        .then((http.Response response) {
+      debugPrint('Hola get response');
+      final int statusCode = response.statusCode;
+
+      if (statusCode == 404) {
+        throw statusCode;
+      }
+
+      if (statusCode < 200 || statusCode >= 400 || json == null) {
+        throw statusCode;
+      }
+      return _decoder.convert(response.body);
+    });
+  }
 }

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:vecinapp/core/services/auth.service.dart';
 import 'package:vecinapp/core/sizeConfig.dart';
+import 'package:vecinapp/screens/user/lobby.dart';
 import 'package:vecinapp/widgets/acceptAlert.dart';
 import 'package:vecinapp/widgets/bottomTitle.dart';
 import 'package:vecinapp/widgets/button.dart';
@@ -130,9 +131,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                         )]
                     );
                   case ConnectionState.done:
-                    return Center(
-                        child: Text(snapshot.data.token)
-                    );
+                    return SideBarLayout(snapshot.data.email);
                   default:
                     return Column(
                         mainAxisAlignment: MainAxisAlignment.center,

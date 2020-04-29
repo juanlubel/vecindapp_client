@@ -75,7 +75,6 @@ class _PasswordScreenState extends State<PasswordScreen> {
                         )]
                     );
                   case ConnectionState.done:
-                    print(snapshot.data.email);
                     return SideBarLayout(snapshot.data.email);
                   default:
                     return Column(

@@ -17,7 +17,7 @@ class WelcomeScreen extends StatelessWidget {
         padding: const EdgeInsets.all(10.0),
         alignment: Alignment.center,
         child: HomeImage(
-          photo: 'assets/images/250Logo.png',
+          photo: 'assets/images/home_logo.png',
           width: 300.0,
           onTap: () {
             Navigator.of(context).pushNamed(
